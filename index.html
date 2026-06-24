@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farmacia Acoiris · Salud y bienestar</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ===== RESET Y BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+    body {
+      background-color: #f9fbfd;
+      color: #1e2b3c;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(145deg, #0b3b4b, #1a5a6e);
+      color: white;
+      padding: 18px 0;
+      box-shadow: 0 6px 18px rgba(0, 20, 30, 0.25);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .logo h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .logo h1 i {
+      color: #a8e6cf;
+      margin-right: 10px;
+    }
+    .logo span {
+      font-weight: 300;
+      font-size: 0.9rem;
+      opacity: 0.85;
+      display: block;
+      margin-top: 2px;
+      letter-spacing: 1.5px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      color: #f0f9ff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s ease;
+    }
+    nav ul li a:hover {
+      border-bottom-color: #a8e6cf;
+      color: #ffffff;
+    }
+    nav ul li a i {
+      margin-right: 6px;
+    }
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #e2f0f5 0%, #cde3ec 100%);
+      padding: 60px 0 50px;
+      border-radius: 0 0 40px 40px;
+      margin-bottom: 40px;
+    }
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .hero-text {
+      flex: 1 1 350px;
+    }
+    .hero-text h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #0a2d3a;
+      line-height: 1.2;
+    }
+    .hero-text h2 i {
+      color: #1b6f7a;
+      margin-right: 8px;
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      margin: 20px 0 25px;
+      color: #1d3e4b;
+      max-width: 550px;
+    }
+    .btn-cta {
+      background: #0b3b4b;
+      color: white;
+      border: none;
+      padding: 14px 38px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 16px rgba(11, 59, 75, 0.3);
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn-cta i {
+      margin-right: 10px;
+    }
+    .btn-cta:hover {
+      background: #145f72;
+      transform: scale(1.02);
+    }
+    .hero-img {
+      flex: 1 1 280px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(2px);
+      padding: 20px 20px 10px;
+      border-radius: 60px 60px 40px 40px;
+      text-align: center;
+      font-size: 7rem;
+      color: #1a5a6e;
+      box-shadow: 0 12px 24px rgba(0, 30, 40, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    .hero-img i {
+      filter: drop-shadow(4px 8px 12px rgba(0, 0, 0, 0.1));
+    }
+    /* ===== SECCIÓN TÍTULO ===== */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #0a2d3a;
+      margin-bottom: 25px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #1b6f7a;
+      margin-top: 8px;
+      border-radius: 4px;
+    }
+    /* ===== SERVICIOS ===== */
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 40px 0 50px;
+    }
+    .servicio-card {
+      background: white;
+      padding: 30px 20px 25px;
+      border-radius: 30px;
+      box-shadow: 0 10px 28px rgba(0, 20, 30, 0.06);
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.02);
+      transition: all 0.2s;
+    }
+    .servicio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 36px rgba(0, 40, 50, 0.08);
+      border-color: #b8d9e5;
+    }
+    .servicio-card i {
+      font-size: 3.2rem;
+      color: #1b6f7a;
+      margin-bottom: 15px;
+      background: #e5f2f7;
+      padding: 16px;
+      border-radius: 30px;
+    }
+    .servicio-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: #0b3b4b;
+    }
+    .servicio-card p {
+      color: #2a4b5a;
+      font-size: 0.95rem;
+    }
+
+    /* ===== SISTEMA DE CITAS ===== */
+    .citas-section {
+      background: #ffffff;
+      padding: 40px 0 50px;
+      border-radius: 40px;
+      margin: 30px 0 40px;
+      box-shadow: 0 8px 30px rgba(0, 20, 30, 0.05);
+      border: 1px solid #e8f0f5;
+    }
+    .citas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 20px;
+    }
+    @media (max-width: 800px) {
+      .citas-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+    .citas-info h3 {
+      font-size: 1.8rem;
+      color: #0a2d3a;
+      margin-bottom: 12px;
+    }
+    .citas-info p {
+      font-size: 1.05rem;
+      color: #1d3e4b;
+      margin-bottom: 18px;
+    }
+    .citas-info ul {
+      list-style: none;
+      padding: 0;
+    }
+    .citas-info ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid #e2edf3;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .citas-info ul li i {
+      color: #1b6f7a;
+      width: 26px;
+      font-size: 1.2rem;
+    }
+    .citas-form {
+      background: #f4fafd;
+      padding: 30px 30px 35px;
+      border-radius: 40px;
+      box-shadow: inset 0 0 0 1px #dce9f0;
+    }
+    .citas-form h4 {
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      color: #0a2d3a;
+    }
+    .citas-form label {
+      font-weight: 600;
+      display: block;
+      margin: 12px 0 4px;
+      color: #1d3e4b;
+      font-size: 0.95rem;
+    }
+    .citas-form input,
+    .citas-form select,
+    .citas-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #cbdde6;
+      border-radius: 30px;
+      font-size: 1rem;
+      background: white;
+      transition: 0.2s;
+    }
+    .citas-form input:focus,
+    .citas-form select:focus,
+    .citas-form textarea:focus {
+      outline: none;
+      border-color: #1b6f7a;
+      box-shadow: 0 0 0 4px rgba(27, 111, 122, 0.1);
+    }
+    .citas-form textarea {
+      min-height: 70px;
+      resize: vertical;
+      border-radius: 20px;
+    }
+    .citas-form .btn-cita {
+      background: #0b3b4b;
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      width: 100%;
+      margin-top: 18px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .citas-form .btn-cita i {
+      margin-right: 10px;
+    }
+    .citas-form .btn-cita:hover {
+      background: #145f72;
+    }
+    .citas-form .small-note {
+      font-size: 0.8rem;
+      color: #3b6373;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* ===== PRODUCTOS ===== */
+    .productos {
+      background: #ffffff;
+      padding: 30px 0 20px;
+      border-radius: 40px 40px 0 0;
+      margin-top: 10px;
+      box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.02);
+    }
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 25px;
+      margin: 30px 0 20px;
+    }
+    .producto-item {
+      background: #f4fafd;
+      border-radius: 24px;
+      padding: 18px 12px 20px;
+      text-align: center;
+      transition: 0.2s;
+      border: 1px solid #deecf2;
+    }
+    .producto-item:hover {
+      background: #e3f0f7;
+      border-color: #9ac2d1;
+    }
+    .producto-item i {
+      font-size: 2.8rem;
+      color: #145f72;
+      margin-bottom: 6px;
+    }
+    .producto-item h4 {
+      font-weight: 600;
+      color: #0a2d3a;
+      font-size: 1rem;
+    }
+    .producto-item span {
+      display: block;
+      color: #1a5a6e;
+      font-weight: 500;
+      background: rgba(0, 0, 0, 0.02);
+      padding: 4px 0;
+      border-radius: 20px;
+      margin-top: 4px;
+    }
+    .badge-oferta {
+      background: #1b6f7a;
+      color: white;
+      font-size: 0.7rem;
+      padding: 2px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    /* ===== CONTACTO ===== */
+    .contacto-section {
+      background: linear-gradient(145deg, #e6f3f8, #d4e7ef);
+      padding: 40px 0 45px;
+      margin: 30px 0 20px;
+      border-radius: 60px 60px 30px 30px;
+    }
+    .contacto-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 35px;
+      justify-content: space-between;
+    }
+    .contacto-info {
+      flex: 1 1 280px;
+    }
+    .contacto-info h3 {
+      font-size: 2rem;
+      color: #0a2d3a;
+      margin-bottom: 15px;
+    }
+    .contacto-info p {
+      margin: 12px 0;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .contacto-info i {
+      width: 30px;
+      color: #0b3b4b;
+      font-size: 1.4rem;
+    }
+    .contacto-form {
+      flex: 1 1 300px;
+      background: white;
+      padding: 25px 25px 30px;
+      border-radius: 40px;
+      box-shadow: 0 16px 32px rgba(0, 30, 40, 0.06);
+    }
+    .contacto-form input,
+    .contacto-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+      border: 1px solid #cbdde6;
+      border-radius: 40px;
+      font-size: 1rem;
+      background: #fafdff;
+      transition: 0.2s;
+    }
+    .contacto-form input:focus,
+    .contacto-form textarea:focus {
+      outline: none;
+      border-color: #1b6f7a;
+      box-shadow: 0 0 0 4px rgba(27, 111, 122, 0.1);
+    }
+    .contacto-form textarea {
+      min-height: 110px;
+      resize: vertical;
+      border-radius: 24px;
+    }
+    .contacto-form .btn-enviar {
+      background: #0b3b4b;
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .contacto-form .btn-enviar i {
+      margin-right: 10px;
+    }
+    .contacto-form .btn-enviar:hover {
+      background: #145f72;
+    }
+
+    /* ===== MENSAJES DE ÉXITO / ERROR ===== */
+    .msg {
+      padding: 14px 20px;
+      border-radius: 30px;
+      margin-bottom: 18px;
+      font-weight: 500;
+      display: none;
+    }
+    .msg-exito {
+      background: #d4edda;
+      color: #0e5a2b;
+      border: 1px solid #b7dfb9;
+      display: block;
+    }
+    .msg-error {
+      background: #f8d7da;
+      color: #7a1f2b;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0a2a35;
+      color: #d3e7f0;
+      padding: 30px 0 20px;
+      margin-top: 40px;
+      border-radius: 40px 40px 0 0;
+    }
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+    }
+    .footer-flex p i {
+      color: #a8e6cf;
+      margin-right: 6px;
+    }
+    .footer-social a {
+      color: #c8e3ee;
+      font-size: 1.6rem;
+      margin-left: 18px;
+      transition: 0.2s;
+    }
+    .footer-social a:hover {
+      color: #a8e6cf;
+      transform: scale(1.08);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 750px) {
+      .header-flex {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+      nav ul {
+        justify-content: center;
+        gap: 16px;
+      }
+      .hero-text h2 {
+        font-size: 2.2rem;
+      }
+      .hero-img {
+        font-size: 5rem;
+        padding: 15px;
+      }
+      .contacto-flex {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 480px) {
+      .logo h1 {
+        font-size: 1.8rem;
+      }
+      .hero-text h2 {
+        font-size: 1.9rem;
+      }
+      .btn-cta {
+        padding: 12px 28px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container header-flex">
+      <div class="logo">
+        <h1><i class="fas fa-leaf"></i> Farmacia Acoiris</h1>
+        <span><i class="fas fa-heartbeat"></i> salud con conciencia</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+          <li><a href="#servicios"><i class="fas fa-pills"></i> Servicios</a></li>
+          <li><a href="#citas"><i class="fas fa-calendar-plus"></i> Citas</a></li>
+          <li><a href="#productos"><i class="fas fa-capsules"></i> Productos</a></li>
+          <li><a href="#contacto"><i class="fas fa-phone-alt"></i> Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="inicio" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h2><i class="fas fa-hand-holding-heart"></i> Tu farmacia de confianza</h2>
+        <p>En <strong>Farmacia Acoiris</strong> cuidamos tu salud con atención personalizada, productos de calidad y un equipo siempre dispuesto a escucharte.</p>
+        <a href="#citas" class="btn-cta"><i class="fas fa-calendar-check"></i> Reserva tu cita</a>
+      </div>
+      <div class="hero-img">
+        <i class="fas fa-hospital-user"></i>
+        <p style="font-size: 1rem; margin-top: 8px; color: #0b3b4b;">+10 años cuidando de ti</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICIOS ===== -->
+  <div class="container" id="servicios">
+    <h2 class="section-title"><i class="fas fa-star" style="color: #1b6f7a; margin-right: 10px;"></i> Nuestros servicios</h2>
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <i class="fas fa-prescription-bottle-alt"></i>
+        <h3>Dispensación</h3>
+        <p>Medicamentos con receta y sin receta, siempre con asesoramiento farmacéutico.</p>
+      </div>
+      <div class="servicio-card">
+        <i class="fas fa-heart"></i>
+        <h3>Chequeo básico</h3>
+        <p>Control de presión, glucosa y colesterol en el momento, sin cita previa.</p>
+      </div>
+      <div class="servicio-card">
+        <i class="fas fa-baby"></i>
+        <h3>Puericultura</h3>
+        <p>Productos para bebés, nutrición y cuidado infantil con total dedicación.</p>
+      </div>
+      <div class="servicio-card">
+        <i class="fas fa-hand-holding-medical"></i>
+        <h3>Consejo farmacéutico</h3>
+        <p>Resolvemos tus dudas sobre medicamentos, interacciones y cuidados.</p>
+      </div>
+      <div class="servicio-card">
+        <i class="fas fa-syringe"></i>
+        <h3>Vacunación</h3>
+        <p>Vacunas de temporada (gripe, covid, neumococo) con cita previa.</p>
+      </div>
+      <div class="servicio-card">
+        <i class="fas fa-weight-scale"></i>
+        <h3>Nutrición</h3>
+        <p>Asesoramiento en dietética y suplementación personalizada.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SISTEMA DE CITAS ONLINE ===== -->
+  <div class="container" id="citas">
+    <div class="citas-section">
+      <h2 class="section-title"><i class="fas fa-calendar-plus" style="color: #1b6f7a; margin-right: 10px;"></i> Citas online</h2>
+      <div class="citas-grid">
+        <!-- Información -->
+        <div class="citas-info">
+          <h3>Reserva tu hora en minutos</h3>
+          <p>Elige el servicio que necesitas y te esperamos en nuestra farmacia. <strong>Sin esperas</strong> y con atención dedicada.</p>
+          <ul>
+            <li><i class="fas fa-clock"></i> Lunes a sábado: 9:00 – 21:30</li>
+            <li><i class="fas fa-user-md"></i> Consulta farmacéutica privada</li>
+            <li><i class="fas fa-syringe"></i> Vacunación (gripe, covid, viajes)</li>
+            <li><i class="fas fa-heartbeat"></i> Chequeos y medición de constantes</li>
+            <li><i class="fas fa-baby"></i> Asesoramiento en puericultura</li>
+            <li><i class="fas fa-hand-holding-heart"></i> Atención personalizada y sin prisas</li>
+          </ul>
+          <p style="margin-top: 16px; background: #e2f0f5; padding: 12px 18px; border-radius: 40px; display: inline-block;">
+            <i class="fas fa-shield-alt" style="color: #0b3b4b;"></i> <strong>30 min</strong> de duración aproximada
+          </p>
+        </div>
+
+        <!-- Formulario de cita -->
+        <div class="citas-form">
+          <h4><i class="fas fa-pen-alt" style="color: #1b6f7a;"></i> Solicitar cita</h4>
+
+          <!-- Mostrar mensajes de éxito/error -->
+          <div id="msgCita" class="msg"></div>
+
+          <form id="formCita" action="enviar.php" method="POST">
+            <input type="hidden" name="tipo" value="cita">
+
+            <label for="citaNombre">Nombre completo *</label>
+            <input type="text" id="citaNombre" name="nombre" placeholder="Ej: Ana Pérez López" required />
+
+            <label for="citaTelefono">Teléfono *</label>
+            <input type="tel" id="citaTelefono" name="telefono" placeholder="612 345 678" required />
+
+            <label for="citaEmail">Correo electrónico</label>
+            <input type="email" id="citaEmail" name="email" placeholder="tu@email.com" />
+
+            <label for="citaServicio">Servicio que necesitas *</label>
+            <select id="citaServicio" name="servicio" required>
+              <option value="">-- Elige una opción --</option>
+              <option value="Consulta farmacéutica">Consulta farmacéutica</option>
+              <option value="Vacunación">Vacunación</option>
+              <option value="Chequeo de constantes">Chequeo de constantes</option>
+              <option value="Asesoramiento en puericultura">Asesoramiento en puericultura</option>
+              <option value="Nutrición y dietética">Nutrición y dietética</option>
+              <option value="Otro">Otro (especifica en observaciones)</option>
+            </select>
+
+            <label for="citaFecha">Fecha preferente *</label>
+            <input type="date" id="citaFecha" name="fecha" required />
+
+            <label for="citaHora">Hora preferente</label>
+            <input type="time" id="citaHora" name="hora" min="09:00" max="21:30" />
+
+            <label for="citaObservaciones">Observaciones (opcional)</label>
+            <textarea id="citaObservaciones" name="observaciones" placeholder="Cuéntanos cualquier detalle adicional..."></textarea>
+
+            <button type="submit" class="btn-cita"><i class="fas fa-check-circle"></i> Confirmar cita</button>
+            <p class="small-note"><i class="fas fa-lock"></i> Tus datos están seguros. Te confirmaremos la cita por teléfono o email.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PRODUCTOS ===== -->
+  <div class="productos" id="productos">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-cart-plus" style="color: #1b6f7a; margin-right: 10px;"></i> Productos destacados</h2>
+      <div class="productos-grid">
+        <div class="producto-item">
+          <i class="fas fa-tablets"></i>
+          <h4>Analgésicos</h4>
+          <span>Paracetamol 1g</span>
+          <span class="badge-oferta">Oferta</span>
+        </div>
+        <div class="producto-item">
+          <i class="fas fa-capsules"></i>
+          <h4>Complejo B</h4>
+          <span>Vitaminas + energía</span>
+          <span class="badge-oferta">2x1</span>
+        </div>
+        <div class="producto-item">
+          <i class="fas fa-first-aid"></i>
+          <h4>Kit curitas</h4>
+          <span>20 unidades</span>
+        </div>
+        <div class="producto-item">
+          <i class="fas fa-droplet"></i>
+          <h4>Suero fisiológico</h4>
+          <span>500 ml</span>
+        </div>
+        <div class="producto-item">
+          <i class="fas fa-tooth"></i>
+          <h4>Higiene bucal</h4>
+          <span>Enjuague + cepillo</span>
+        </div>
+        <div class="producto-item">
+          <i class="fas fa-allergies"></i>
+          <h4>Antialérgico</h4>
+          <span>Cetirizina 10mg</span>
+        </div>
+      </div>
+      <p style="text-align: right; font-size: 0.95rem; color: #1a5a6e; margin-top: 10px;"><i class="fas fa-tags"></i> Consulta disponibilidad en tienda</p>
+    </div>
+  </div>
+
+  <!-- ===== CONTACTO ===== -->
+  <div class="container" id="contacto">
+    <div class="contacto-section">
+      <div class="contacto-flex">
+        <div class="contacto-info">
+          <h3><i class="fas fa-map-pin" style="color: #0b3b4b;"></i> Farmacia Acoiris</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Av. de la Salud 42, Local 3, 28001 Madrid</p>
+          <p><i class="fas fa-phone"></i> +34 910 123 456</p>
+          <p><i class="fas fa-envelope"></i> hola@farmaciaacoiris.es</p>
+          <p><i class="fas fa-clock"></i> Lunes a sábado: 9:00 – 21:30h</p>
+          <div style="margin-top: 20px; background: #cde0e9; padding: 12px 18px; border-radius: 60px; display: inline-block;">
+            <i class="fas fa-wheelchair" style="margin-right: 8px;"></i> Acceso adaptado
+          </div>
+        </div>
+        <div class="contacto-form">
+          <h4 style="margin-bottom: 16px; font-weight: 600; color: #0a2d3a;"><i class="fas fa-paper-plane" style="color: #1b6f7a;"></i> Escríbenos</h4>
+
+          <!-- Mostrar mensajes de éxito/error -->
+          <div id="msgContacto" class="msg"></div>
+
+          <form id="formContacto" action="enviar.php" method="POST">
+            <input type="hidden" name="tipo" value="contacto">
+            <input type="text" name="nombre" placeholder="Tu nombre" required />
+            <input type="email" name="email" placeholder="Correo electrónico" required />
+            <textarea name="mensaje" placeholder="¿En qué podemos ayudarte?" required></textarea>
+            <button type="submit" class="btn-enviar"><i class="fas fa-check-circle"></i> Enviar mensaje</button>
+          </form>
+          <p style="font-size: 0.8rem; color: #3b6373; margin-top: 10px; text-align: center;">Respondemos en menos de 24h</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container footer-flex">
+      <p><i class="fas fa-copyright"></i> 2026 Farmacia Acoiris · Cuidamos tu salud</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 16px; border-top: 1px solid #1d4f60; padding-top: 16px; font-size: 0.85rem; opacity: 0.7; text-align: center;">
+      <i class="fas fa-shield-alt"></i> Siempre a tu lado · Farmacia responsable
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Fecha mínima para citas (mañana)
+    const fechaInput = document.getElementById('citaFecha');
+    if (fechaInput) {
+      const hoy = new Date();
+      const manana = new Date(hoy);
+      manana.setDate(hoy.getDate() + 1);
+      const anio = manana.getFullYear();
+      const mes = String(manana.getMonth() + 1).padStart(2, '0');
+      const dia = String(manana.getDate()).padStart(2, '0');
+      fechaInput.min = anio + '-' + mes + '-' + dia;
+    }
+
+    // Mostrar mensajes de éxito/error desde la URL
+    window.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const status = urlParams.get('status');
+      const msg = urlParams.get('msg');
+
+      if (status && msg) {
+        const msgCita = document.getElementById('msgCita');
+        const msgContacto = document.getElementById('msgContacto');
+
+        const decodedMsg = decodeURIComponent(msg);
+        const isError = (status === 'error');
+
+        if (msgCita) {
+          msgCita.className = 'msg ' + (isError ? 'msg-error' : 'msg-exito');
+          msgCita.textContent = decodedMsg;
+          msgCita.style.display = 'block';
+        }
+        if (msgContacto) {
+          msgContacto.className = 'msg ' + (isError ? 'msg-error' : 'msg-exito');
+          msgContacto.textContent = decodedMsg;
+          msgContacto.style.display = 'block';
+        }
+
+        // Limpiar URL
+        if (window.history && window.history.replaceState) {
+          const cleanUrl = window.location.pathname + window.location.hash;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

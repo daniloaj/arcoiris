@@ -1,0 +1,21 @@
+# Archivos de entorno (contienen contraseñas)
+.env
+.env.local
+.env.*.local
+
+# Dependencias de PHP (se instalan con Composer en el servidor)
+/vendor/
+composer.lock
+ 
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+error_log
+
+# Configuración de IDE
+.vscode/
+.idea/
+*.sublime-*
