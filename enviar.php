@@ -65,7 +65,7 @@ function enviarCorreo($asunto, $cuerpoHtml, $cuerpoTexto = '') {
 
         // Remitente y destinatario
         $mail->setFrom(SMTP_USER, 'Farmacia Acoiris - Web');
-        $mail->addAddress(DESTINO_EMAIL, DESTINO_NOMBRE);
+        $mail->addAddress('daliaangela32@gmail.com', DESTINO_NOMBRE);
         $mail->addReplyTo(SMTP_USER, 'Farmacia Acoiris');
 
         // Contenido
