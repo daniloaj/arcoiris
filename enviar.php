@@ -33,7 +33,7 @@ define('SMTP_PASS',   getenv('SMTP_PASS') ?: '');
 define('SMTP_PORT',   getenv('SMTP_PORT') ?: 587);
 define('SMTP_SECURE', getenv('SMTP_SECURE') ?: 'tls');
 
-define('DESTINO_EMAIL', getenv('DESTINO_EMAIL') ?: '');
+define('DESTINO_EMAIL', 'daliaangela32@gmail.com' ?: '');
 define('DESTINO_NOMBRE', getenv('DESTINO_NOMBRE') ?: 'Farmacia Acoiris');
 
 // Verificar configuración
